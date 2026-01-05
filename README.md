@@ -1,31 +1,60 @@
-# 🔒 Password-Protected Security System
+# Password Security System using LPC1768
 
-<div align="center">
+## Project Overview
+A secure password-based access control system implemented on LPC1768 ARM Cortex-M3 microcontroller with 4x4 keypad, LCD display, and buzzer feedback.
 
-![License](https://img.shields.io/badge/License-MIT-blue.svg)
-![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
-![MCU](https://img.shields.io/badge/MCU-LPC1768_ARM_Cortex_M3-0091BD)
+## Features
+- 4-digit password protection
+- LCD display for user interface
+- Audio feedback using buzzer
+- Keypad input for password entry
+- Configurable password storage
+- Error handling and timeout mechanisms
 
-</div>
+## Hardware Requirements
+- LPC1768 Development Board
+- 16x2 LCD Display (HD44780 compatible)
+- 4x4 Matrix Keypad
+- Buzzer
+- Connecting wires
+- Power supply (3.3V)
 
-## 🎯 Project Overview
-A secure access control system using **ARM Cortex-M3 (LPC1768)** with password protection, LCD interface, and alarm system.
+## Hardware Connections
 
-## ✨ Features
-- ✅ 6-digit password protection
-- ✅ 4x4 Matrix Keypad interface
-- ✅ 16x2 LCD status display
-- ✅ Buzzer alarm system
-- ✅ 3-attempt lockout (30 seconds)
-- ✅ Modular firmware architecture
+### LCD Connections (Port 0):
+- RS  → P0.10
+- EN  → P0.11
+- D4  → P0.15
+- D5  → P0.16
+- D6  → P0.17
+- D7  → P0.18
 
-## 🛠️ Hardware Components
-| Component | Details | Connection |
-|-----------|---------|------------|
-| Microcontroller | NXP LPC1768 (Cortex-M3) | - |
-| Display | HD44780 16x2 LCD | 4-bit mode |
-| Keypad | 4x4 Matrix | GPIO scanning |
-| Buzzer | Piezo Buzzer | PWM output |
-| Power | 3.3V DC | - |
+### Keypad Connections (Port 2):
+- Rows: P2.4 - P2.7
+- Columns: P2.0 - P2.3
 
-## 📁 Project Structure
+### Buzzer:
+- Signal → P0.10
+
+## Software Requirements
+- Keil uVision 5
+- CMSIS Core for Cortex-M3
+- LPC17xx Device Family Pack
+
+## Building the Project
+1. Open `project/PasswordSecuritySystem.uvprojx` in Keil uVision
+2. Build the project (F7)
+3. Connect LPC1768 via USB
+4. Flash the binary file
+
+## Usage
+1. System boots and displays "Enter Password:"
+2. Enter 4-digit password using keypad
+3. LCD shows '*' for each entered digit
+4. Press '#' to confirm or '*' to clear
+5. Correct password: "Valid Password" + short beep
+6. Wrong password: "Invalid Password" + long beep
+
+## Default Password
+- Default password: "1914"
+- Can be changed in `system_config.h`
